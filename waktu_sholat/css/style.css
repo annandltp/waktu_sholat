@@ -1,0 +1,169 @@
+.neonText {
+	color: #fff;
+	text-shadow:
+		0 0 7px #fff,
+		0 0 10px #fff,
+		0 0 21px #fff,
+		0 0 42px #0fa,
+		0 0 82px #0fa,
+		0 0 92px #0fa,
+		0 0 102px #0fa,
+		0 0 151px #0fa;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-size: 4.2rem;
+	animation: flicker 1.5s infinite alternate;
+}
+
+.modal-header h1 {
+	font-size: 4.2rem;
+	animation: flicker 500s infinite alternate;
+}
+
+/* Flickering animation */
+@keyframes flicker {
+
+	0%,
+	18%,
+	22%,
+	25%,
+	53%,
+	57%,
+	100% {
+		text-shadow:
+			0 0 4px #fff,
+			0 0 11px #fff,
+			0 0 19px #fff,
+			0 0 40px #91CFE8,
+			0 0 80px #91CFE8,
+			0 0 90px #91CFE8,
+			0 0 100px #91CFE8,
+			0 0 150px #91CFE8;
+	}
+
+	20%,
+	24%,
+	55% {
+		text-shadow: none;
+	}
+}
+
+
+/* Additional styling */
+h1,
+h2 {
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: GoellamantsRegular;
+	src: url(../fonts/Mont-Heavy.otf);
+}
+
+body {
+	width: 1920px;
+	/* The width is fixed by pixels */
+	height: 1080px;
+	background-image: url("../main-bg.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	overflow: hidden;
+	font-family: GoellamantsRegular;
+	/* cursor: none; */
+}
+
+@font-face {
+	font-family: digital7;
+	src: url(digital-7.woff);
+}
+
+.header {
+	background-color: rgb(165, 13, 13);
+	padding: 10px 40px;
+	text-align: center;
+	opacity: 0.7;
+	position: fixed;
+	width: 100%;
+}
+
+.isi {
+	padding: 200px;
+	text-align: center;
+	font-size: 35px;
+}
+
+.footer {
+	padding: 10px;
+	text-align: center;
+	position: fixed;
+	bottom: 10px;
+	width: 100%;
+}
+
+.jam {
+	font-size: 150px;
+	font-family: digital7;
+	text-shadow: 0 0 20px #fff;
+	letter-spacing: 5px;
+	color: #fff;
+	user-select: none;
+	opacity: 1;
+}
+
+.hari {
+	font-size: 60px;
+	text-shadow: 0 0 8px #fff;
+	color: #fff;
+	user-select: none;
+}
+
+.texth {
+	font-size: 60px;
+	text-shadow: 0 0 8px #fff;
+	color: #fff;
+	user-select: none;
+	position: center;
+}
+
+.tgl {
+	font-size: 30px;
+	text-shadow: 0 0 8px #fff;
+	color: #fff;
+	user-select: none;
+	font-family: GoellamantsRegular;
+}
+
+.jam2 {
+	font-size: 50px;
+	font-family: digital7;
+}
+
+.col-lg {
+	box-shadow: 0 34px 28px 0 rgba(0, 0, 0, 0.2), 0 26px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 12px;
+}
+
+.modal-content {
+	/* background-color: #0f0; */
+	font-family: GoellamantsRegular;
+	color: black;
+}
+
+.modal-header {
+	font-family: GoellamantsRegular;
+	/* box-shadow: 0 34px 28px 0 rgba(0, 0, 0, 0.2),
+		0 26px 20px 0 rgba(0, 0, 0, 0.19); */
+	/* background-color: #0f0; */
+	color: black;
+	text-align: center;
+	font-size: 30px;
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="%PUBLIC_URL%/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="%PUBLIC_URL%/css/style.css" />
+
+  <!-- PRAYER TIME -->
+  <script type="text/javascript" src="%PUBLIC_URL%/css/PrayTimes.js"></script>
+
+  <script type="text/javascript">
+    function waktuSholat() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      h = checkTime(h);
+      m = checkTime(m);
+      s = checkTime(s);
+
+      var date = today.getDate();
+      var month = today.getMonth();
+      var montharr = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober",
+        "November", "Desember"
+      ];
+      month = montharr[month];
+      var year = today.getFullYear();
+
+      var day = today.getDay();
+      var dayarr = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+      day = dayarr[day];
+
+      document.getElementById('jam').innerHTML = h + ":" + m + ":" + s;
+      document.getElementById('hari').innerHTML = day + ",";
+      document.getElementById('tgl').innerHTML = date + " " + month + " " + year;
+
+
+      // MANUAL SETTINGS --------------------------------------------------------
+      prayTimes.setMethod('MWL'); // perhitungan
+      var Ptimes = prayTimes.getTimes(today, [-6.2, 106.8], 7); // jakarta (longitude, Latitude, Time Zone)
+      // ------------------------------------------------------------------------
+
+      document.getElementById('subuh').innerHTML = Ptimes.fajr;
+      document.getElementById('terbit').innerHTML = Ptimes.sunrise;
+      document.getElementById('zuhur').innerHTML = Ptimes.dhuhr;
+      document.getElementById('ashar').innerHTML = Ptimes.asr;
+      document.getElementById('maghrib').innerHTML = Ptimes.maghrib;
+      document.getElementById('isya').innerHTML = Ptimes.isha;
+
+      // Azan
+
+      var waktu = h + ":" + m;
+
+      if (waktu == Ptimes.fajr) {
+        $('#ModalAzan').modal('show');
+
+        setTimeout(function () {
+          $('#ModalAzan').modal('hide');
+        }, 60000);
+      }
+
+      if (waktu == Ptimes.dhuhr) {
+        $('#ModalAzan').modal('show');
+
+        setTimeout(function () {
+          $('#ModalAzan').modal('hide');
+        }, 60000);
+      }
+
+      if (waktu == Ptimes.asr) {
+        $('#ModalAzan').modal('show');
+
+        setTimeout(function () {
+          $('#ModalAzan').modal('hide');
+        }, 60000);
+      }
+
+      if (waktu == Ptimes.maghrib) {
+        $('#ModalAzan').modal('show');
+
+        setTimeout(function () {
+          $('#ModalAzan').modal('hide');
+        }, 60000);
+      }
+
+      if (waktu == Ptimes.isha) {
+        $('#ModalAzan').modal('show');
+
+        setTimeout(function () {
+          $('#ModalAzan').modal('hide');
+        }, 60000);
+      }
+
+      // colors
+
+      var akhirwaktu = "23:59";
+
+      if (waktu >= Ptimes.fajr && waktu < Ptimes.sunrise) {
+        document.getElementById('csubuh').style.backgroundColor = "#812439";
+      } else {
+        document.getElementById('csubuh').style.backgroundColor = "#697DBF";
+      }
+
+      if (waktu >= Ptimes.sunrise && waktu < Ptimes.dhuhr) {
+        document.getElementById('cterbit').style.backgroundColor = "#812439";
+      } else {
+        document.getElementById('cterbit').style.backgroundColor = "#697DBF";
+      }
+
+      if (waktu >= Ptimes.dhuhr && waktu < Ptimes.asr) {
+        document.getElementById('czuhur').style.backgroundColor = "#812439";
+      } else {
+        document.getElementById('czuhur').style.backgroundColor = "#697DBF";
+      }
+
+      if (waktu >= Ptimes.asr && waktu < Ptimes.maghrib) {
+        document.getElementById('cashar').style.backgroundColor = "#812439";
+      } else {
+        document.getElementById('cashar').style.backgroundColor = "#697DBF";
+      }
+
+      if (waktu >= Ptimes.maghrib && waktu < Ptimes.isha) {
+        document.getElementById('cmaghrib').style.backgroundColor = "#812439";
+      } else {
+        document.getElementById('cmaghrib').style.backgroundColor = "#697DBF";
+      }
+      if (waktu >= Ptimes.isha && waktu < akhirwaktu) {
+        document.getElementById('cisya').style.backgroundColor = "#812439";
+      } else {
+        document.getElementById('cisya').style.backgroundColor = "#697DBF";
+      }
+
+      var t = setTimeout(waktuSholat, 1000);
+    }
+
+    function checkTime(i) {
+      if (i < 10) {
+        i = "0" + i
+      }; // add zero in front of numbers < 10
+      return i;
+    }
+  </script>
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <title>React App</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+</body>
+
+<script src="%PUBLIC_URL%/css/jquery.min.js"></script>
+<script src="%PUBLIC_URL%/css/bootstrap.min.js"></script>
+<script src="%PUBLIC_URL%/css/hijri.js"></script>
+
+</html>
